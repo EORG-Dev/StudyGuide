@@ -1,3 +1,14 @@
+#Ingnore BIN and OBJ
+/StudyGuide/StudyGuide/StudyGuide.Android/bin/**
+/StudyGuide/StudyGuide/StudyGuide.Android/obj/**
+/StudyGuide/StudyGuide/StudyGuide/bin/**
+/StudyGuide/StudyGuide/StudyGuide/obj/**
+
+/StudyGuide/StudyGuide/StudyGuide.Android/Ressources/Resource.designer.cs
+
+/StudyGuide/.vs/**
+
+### Default by GitHub for Android Projects ###
 # Gradle files
 .gradle/
 build/
@@ -28,3 +39,4 @@ google-services.json
 
 # Android Profiling
 *.hprof
+StudyGuide/StudyGuide/StudyGuide.Android/Resources/Resource.designer.cs
