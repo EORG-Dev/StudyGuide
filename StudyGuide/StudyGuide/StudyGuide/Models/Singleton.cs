@@ -18,6 +18,7 @@ namespace StudyGuide.Models
                     if (_instance == null)
                     {
                         _instance = new Singleton();
+                        _instance.OnNavBack += (s, e) => { };
                     }
                     return _instance;
                 }
@@ -44,6 +45,16 @@ namespace StudyGuide.Models
                 return Path.Combine(FolderPath, "settings.xml");
             }
         }
+        public void TriggerNavBackEvent()
+        {
+            OnNavBackEvent(null, new EventArgs());
+        }
+        protected virtual void OnNavBackEvent(object sender, EventArgs e)
+        {
+            EventHandler<EventArgs> handler = OnNavBack;
+            handler(sender, e);
+        }
+        public event EventHandler<EventArgs> OnNavBack;
         #endregion Parameter
     }
 }

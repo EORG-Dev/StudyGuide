@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:b="clr-namespace:StudyGuide.Models"
+             xmlns:self="clr-namespace:StudyGuide.ViewModels"
+             x:DataType="self:VM_EditE"
+             x:Class="StudyGuide.Views.CP_EditE"
+             NavigationPage.HasNavigationBar="False"
+             Title="CP_EditE">
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="LBL_Row">
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LBL_Header">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="SLO_Row">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        </Style>
+        <Style TargetType="Grid" x:Key="GRD_Row">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="ColumnDefinitions" Value="128,*"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="Grid.Column" Value="1"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Grid.Column" Value="1"/>
+        </Style>
+        <Style TargetType="ImageButton">
+            <Setter Property="CornerRadius" Value="32"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="HeightRequest" Value="64"/>
+            <Setter Property="WidthRequest" Value="64"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource UI}"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+
+        <!--Data-->
+        <ScrollView>
+            <StackLayout
+             Spacing="-8">
+                <!--Image-->
+                <Label Text="Einsatz aufnehmen"
+                      HorizontalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                    HeightRequest="108" Margin="0,24,0,18" />
+                <!--Dienst-->
+                <Frame 
+                   Margin="16,16,16,8" VerticalOptions="Start">
+                    <StackLayout Spacing="8">
+                        <Label Text="Dienst"
+                           Style="{StaticResource LBL_Header}"/>
+                        <!--Datum-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Schichtdatum"
+                            Style="{StaticResource LBL_Row}"/>
+                            <DatePicker Date="{Binding Base.DT_Datum, Mode=TwoWay}"
+                                        Format="dd.MM.yyyy"
+                                        Grid.Column="1"/>
+                        </Grid>
+                        <!--RW-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Rettungswache"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Button x:Name="BTN_ED_RW"
+                                   Command="{Binding SelectionCommand}"
+                                   CommandParameter="{x:Reference BTN_ED_RW}">
+                            </Button>
+                        </Grid>
+                        <!--RM-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Rettungsmittel"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Button x:Name="BTN_ED_RM"
+                                   Command="{Binding SelectionCommand}"
+                                   CommandParameter="{x:Reference BTN_ED_RM}">
+                            </Button>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+                <!--Einsatzdaten-->
+                <Frame 
+                   Margin="16,16,16,8" VerticalOptions="Start">
+                    <StackLayout Spacing="8">
+                        <Label Text="Einatzdaten"
+                           Style="{StaticResource LBL_Header}"/>
+                        <!--Stichwort-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Alarmtext"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Button x:Name="BTN_ED_S"
+                                   Command="{Binding SelectionCommand}"
+                                   CommandParameter="{x:Reference BTN_ED_S}">
+                            </Button>
+                        </Grid>
+                        <!--Einsatzort-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Einsatzort"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Button x:Name="BTN_ED_Est"
+                                   CommandParameter="{x:Reference BTN_ED_Est}">
+                            </Button>
+                        </Grid>
+                        <!--Situation-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Situation"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Button x:Name="BTN_ED_Sit"
+                                   Command="{Binding SelectionCommand}"
+                                   CommandParameter="{x:Reference BTN_ED_Sit}">
+                            </Button>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+            
+                <!--Demografik-->
+                <Frame 
+                   Margin="16,16,16,8" VerticalOptions="Start">
+                    <StackLayout Spacing="8">
+                        <Label Text="Demographie"
+                           Style="{StaticResource LBL_Header}"/>
+                        <!--Geschlecht-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Geschlecht"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Button x:Name="BTN_PD_Geschlecht"
+                                   Command="{Binding SelectionCommand}"
+                                   CommandParameter="{x:Reference BTN_PD_Geschlecht}">
+                            </Button>
+                        </Grid>
+                        <!--Alter-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Alter"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Button x:Name="BTN_PD_A"
+                                    Text="{Binding Base.Alter, Mode=TwoWay}"
+                                    Command="{Binding ZahlCommand}"
+                                    CommandParameter="{x:Reference BTN_PD_A}"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                
+                <!--Patientenversorgung-->
+                <Frame 
+                   Margin="16,16,16,8" VerticalOptions="Start">
+                    <StackLayout Spacing="8">
+                        <Label Text="Patientenversorgung"
+                           Style="{StaticResource LBL_Header}"/>
+                        <!--Diagnosen-->
+                    </StackLayout>
+                </Frame>
+
+                <!--Auswertung-->
+                <Frame 
+                   Margin="16,16,16,16" VerticalOptions="Start">
+                    <StackLayout Spacing="8">
+                        <Label Text="Auswertung"
+                           Style="{StaticResource LBL_Header}"/>
+                        <!--RDversorg-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Versorgung"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Button x:Name="BTN_AW_RDversorg"
+                                   Command="{Binding SelectionCommand}"
+                                   CommandParameter="{x:Reference BTN_AW_RDversorg}">
+                            </Button>
+                        </Grid>
+                        <!--Trsp mit SoSi-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Einweisung durch"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <StackLayout Grid.Column="1"
+                                         RadioButtonGroup.GroupName="Einweisung"
+                                         RadioButtonGroup.SelectedValue="{Binding Base.EinweisungDurch, Mode=TwoWay}">
+                                <RadioButton Value="BTN1" />
+                                <RadioButton Value="BTN2" />
+                                <RadioButton Value="BTN3" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!--Controls-->
+        <StackLayout  HorizontalOptions="EndAndExpand"
+                      VerticalOptions="EndAndExpand"
+                      Orientation="Vertical"
+                      Padding="0,0,16,16"
+                      Spacing="8">
+            <ImageButton 
+                Command="{Binding CloseCommand}"
+                BackgroundColor="Red"
+                Source="cancel.png"/>
+            <ImageButton 
+                Command="{Binding SaveCommand}"
+                BackgroundColor="Green"
+                Source="save.png"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

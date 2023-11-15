@@ -1,4 +1,5 @@
 ﻿using StudyGuide.Models;
+using StudyGuide.Services;
 using StudyGuide.Views;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,10 @@ namespace StudyGuide.ViewModels
     {
         public VM_MainPage()
         {
-
+            Singleton.Instance.OnNavBack += (s, e) =>
+            {
+                SelectedTabIndex = 0;
+            };
         }
         int _selectedTabIndex = 0;
         public int SelectedTabIndex
@@ -37,11 +41,9 @@ namespace StudyGuide.ViewModels
         {
             try
             {
-                App.Current.MainPage.DisplayAlert("Achtung", "Hier fehlt ein Feature :)", "Abbrechen");
-                //var edit = new CP_EditE(Srv_Data.GetPreset());
-                //edit.Finished += (s, e) => { Srv_Data.Insert<Einsatz>(s); };
-                //Navigation.PushAsync(edit);
-                //SelectedTabIndex = 2;
+                var edit = new CP_EditE(Srv_Data.GetPreset(), false);
+                Navigation.Instance.PushAsync(edit);
+                SelectedTabIndex = 2;
             } catch (Exception ex)
             {
                 App.Current.MainPage.DisplayAlert("Fehler", ex.Message, "Abbrechen");

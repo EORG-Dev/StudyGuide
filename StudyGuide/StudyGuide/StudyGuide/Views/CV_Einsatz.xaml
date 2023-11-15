@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:self="clr-namespace:StudyGuide.ViewModels"
-             xmlns:b="clr-namespace:StudyGuide.Models"
              x:DataType="self:VM_Einsatz"
              x:Name="CV_Self"
-             xmlns:models="clr-namespace:Proj_AzubiGuide.Models"
+             xmlns:models="clr-namespace:StudyGuide.Models"
              x:Class="StudyGuide.Views.CV_Einsatz">
     <ContentView.Resources>
         <Style TargetType="ImageButton">
@@ -17,65 +16,73 @@
             <Setter Property="BackgroundColor" Value="{StaticResource UI}"/>
         </Style>
     </ContentView.Resources>
-    <Grid>
-        
+    <Grid RowDefinitions="174,*">
+
+        <!--Image-->
+        <Label Text="Einsatzübersicht"
+               HorizontalOptions="Center"
+               VerticalTextAlignment="Center"
+               FontSize="32"
+               FontAttributes="Bold"
+               HeightRequest="215"
+               Margin="0,0,0,0" />
+
         <!--Data-->
-        <ScrollView Margin="8,0,8,0"
+        <ScrollView Margin="16,0,16,0"
+                    Grid.Row="1"
                     HorizontalScrollBarVisibility="Always">
             <StackLayout Spacing="-8">
-                <!--Image-->
-                <Label Text="Einsatzübersicht"
-                      HorizontalOptions="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="32"
-                   FontAttributes="Bold"
-                    HeightRequest="128" Margin="0,24,0,18" />
+
 
                 <!--Data-->
                 <CollectionView SelectionMode="None"
-                                    ItemsSource="{Binding DataSource, Mode=OneWay}"
-                                    x:Name="CollectionV">
+                                ItemsSource="{Binding DataSource, Mode=OneWay}"
+                                x:Name="CollectionV">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:C_Einsatz">
                             <Frame HasShadow="False"
-                                Padding="12,8,12,8">
+                                   Padding="12,8,12,8">
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="24"/>
-                                        <RowDefinition Height="24"/>
-                                        <RowDefinition Height="24"/>
+                                        <RowDefinition Height="24" />
+                                        <RowDefinition Height="24" />
+                                        <RowDefinition Height="24" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="120"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="48"/>
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="48" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding S_Datum, StringFormat='Tag: {0:D}'}" 
-                                           Grid.Row="0"/>
-                                    <Label Text="???"  
-                                           Grid.Row="1"/>
-                                    <Label Text="STICHWORT GESAMT"  
-                                           Grid.Row="2"/>
-                                    <Label Text="ALT.GESC" 
-                                           Grid.Row="0" Grid.Column="1"/>
-                                    <Label Text="EZD"  
-                                           Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"/>
-                                    <Grid Grid.Column="2" Grid.RowSpan="3">
+                                    <Label Text="{Binding S_Datum, StringFormat='Tag: {0:D}'}"
+                                           Grid.Row="0" />
+                                    <Label Text="???"
+                                           Grid.Row="1" />
+                                    <Label Text="STICHWORT GESAMT"
+                                           Grid.Row="2" />
+                                    <Label Text="ALT.GESC"
+                                           Grid.Row="0"
+                                           Grid.Column="1" />
+                                    <Label Text="EZD"
+                                           Grid.Row="1"
+                                           Grid.Column="1"
+                                           Grid.RowSpan="2" />
+                                    <Grid Grid.Column="2"
+                                          Grid.RowSpan="3">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
                                         <ImageButton Command="{Binding BindingContext.EditCommand, Source={x:Reference CV_Self}}"
-                                                 CommandParameter="{Binding ID}"
-                                                 BackgroundColor="Transparent"
-                                                 Source="edit.png"
-                                                     Padding="4"/>
+                                                     CommandParameter="{Binding ID}"
+                                                     BackgroundColor="Transparent"
+                                                     Source="edit.png"
+                                                     Padding="4" />
                                         <ImageButton Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CV_Self}}"
-                                                 CommandParameter="{Binding ID}"
-                                                 Grid.Row="1"
-                                                 BackgroundColor="Transparent"
-                                                 Source="delete.png"
-                                                 Padding="4"/>
+                                                     CommandParameter="{Binding ID}"
+                                                     Grid.Row="1"
+                                                     BackgroundColor="Transparent"
+                                                     Source="delete.png"
+                                                     Padding="4" />
                                     </Grid>
                                 </Grid>
                             </Frame>
@@ -83,20 +90,21 @@
                     </CollectionView.ItemTemplate>
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
-                                               ItemSpacing="4" />
+                                           ItemSpacing="4" />
                     </CollectionView.ItemsLayout>
                 </CollectionView>
             </StackLayout>
         </ScrollView>
+
         <!--Controls-->
         <StackLayout  HorizontalOptions="EndAndExpand"
                       VerticalOptions="EndAndExpand"
                       Orientation="Vertical"
                       Padding="0,0,16,16"
                       Spacing="8">
-            <ImageButton 
+            <!--<ImageButton 
                 Source="reset.png"
-                Command="{Binding NewEntryCommand}"/>
+                Command="{Binding NewEntryCommand}"/>-->
             <!--<ImageButton 
             Source="upload.png"
                 Command="{Binding ExportCommand}"/>

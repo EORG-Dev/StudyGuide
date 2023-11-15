@@ -27,11 +27,14 @@ namespace StudyGuide.Models
             set => Datum = value.Ticks;
         }
         [DataMember]
-        public string Rettungsmittel { get;set; }  
+        public string Rettungsmittel { get;set; }
         [DataMember]
-        public string Alarmtext { get; set; }  
+        public string Standort { get; set; }
+
         #endregion ED
         #region SSS
+        [DataMember]
+        public string Alarmtext { get; set; }
         [DataMember]
         public string Einsatzort { get; set; }  
         [DataMember]
@@ -39,7 +42,7 @@ namespace StudyGuide.Models
         #endregion SSS
         #region Patient
         [DataMember]
-        public object Geschlecht { get; set; } = "";
+        public string Geschlecht { get; set; } = "";
         [DataMember]
         public int Alter { get; set; } = -1;
         #endregion Patient
@@ -50,7 +53,7 @@ namespace StudyGuide.Models
         [DataMember]
         public string RDVersorgung { get; set; }
         [DataMember]
-        public object EinweisungDurch { get; set; } = "";
+        public string EinweisungDurch { get; set; } = "";
         #endregion Auswertung
         #region Sonstiges
         #endregion Sonstiges

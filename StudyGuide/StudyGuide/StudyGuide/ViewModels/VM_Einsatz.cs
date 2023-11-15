@@ -1,4 +1,5 @@
-﻿using Proj_AzubiGuide.Models;
+﻿using StudyGuide.Models;
+using StudyGuide.Services;
 using StudyGuide.Views;
 using System;
 using System.Collections.Generic;
@@ -16,27 +17,24 @@ namespace StudyGuide.ViewModels
         public VM_Einsatz()
         {
             LoadData();
+            Singleton.Instance.OnNavBack += (s, e) =>
+            {
+                LoadData();
+            };
         }
         ObservableCollection<C_Einsatz> _dataSource;
         void LoadData()
         {
             try
             {
-                var source = new List<C_Einsatz>()
-                {
-                    // Fake data
-                    new C_Einsatz()
-                    {
-                       
-                    },
-                };//Srv_Data.GetAll<C_Einsatz>();
+                var source = Srv_Data.GetAll<C_Einsatz>();
                 ObservableCollection<C_Einsatz> Data = new ObservableCollection<C_Einsatz>();
 
-                // Add the last 20 entries for editing by user
+                // Add the last 10 entries for editing by user
                 int c = 0;
                 for (var i = source.Count - 1; i >= 0; i--)
                 {
-                    if (c == 20)
+                    if (c == 10)
                         break;
                     Data.Add(source[i]);
                     c++;
@@ -84,8 +82,7 @@ namespace StudyGuide.ViewModels
             bool answer = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Löschen?", "Möchtest du den Eintrag wirklich löschen?", "Ja", "Nein");
             if (answer)
             {
-                //Srv_Data.Remove<C_Einsatz>(Srv_Data.GetByID(Convert.ToString(param)));
-                App.Current.MainPage.DisplayAlert("Achtung", "Hier fehlt ein Feature :)", "Abbrechen");
+                Srv_Data.Remove<C_Einsatz>(Srv_Data.GetByID(Convert.ToString(param)));
                 LoadData();
             }
         }
@@ -99,12 +96,8 @@ namespace StudyGuide.ViewModels
         }
         async void ExecuteEditCommand(object param)
         {
-            App.Current.MainPage.DisplayAlert("Achtung", "Hier fehlt ein Feature :)", "Abbrechen");
-
-            /*var edit = new CP_EditE(Srv_Data.GetByID(Convert.ToString(param)));
-            
-            edit.Finished += (s, e) => { Srv_Data.InsertOrReplace<C_Einsatz>(s); LoadData(); };
-            Navigation.PushAsync(edit);*/
+            var edit = new CP_EditE(Srv_Data.GetByID(Convert.ToString(param)), true);
+            Navigation.Instance.PushAsync(edit);
         }
         Command _ExportCommand;
         public Command ExportCommand

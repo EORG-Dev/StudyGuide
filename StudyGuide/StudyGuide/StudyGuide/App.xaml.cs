@@ -1,4 +1,5 @@
 ﻿using StudyGuide.Models;
+using StudyGuide.Services;
 using StudyGuide.Views;
 using System;
 using Xamarin.Forms;
@@ -17,8 +18,11 @@ namespace StudyGuide
             // Setup Singleton
             Singleton.Instance.FolderPath = folderpath;
 
+            // Setup Services
+            Srv_Data.Setup();
+
             // Navigation
-            MainPage = new CP_MainPage();
+            MainPage =new NavigationPage(new CP_MainPage());
 
             // Add Navigation
             Navigation.Instance = MainPage.Navigation;

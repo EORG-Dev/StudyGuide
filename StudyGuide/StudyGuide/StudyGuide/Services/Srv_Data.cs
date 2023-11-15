@@ -32,7 +32,7 @@ namespace StudyGuide.Services
 
             // copy certain values from last to new
             var neu = new C_Einsatz();
-            neu.RW = last.RW;
+            neu.Standort = last.Standort;
             neu.Rettungsmittel = last.Rettungsmittel;
 
             // return new

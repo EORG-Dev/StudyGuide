@@ -8,7 +8,7 @@ namespace StudyGuide.Models
     public class Navigation
     {
         private static readonly object padlock = new object();
-        public static INavigation _instance;
+        private static INavigation _instance;
         public static INavigation Instance
         {
             get
