@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Views\CP_MainPage.xaml.cs">
       <DependentUpon>CP_MainPage.xaml</DependentUpon>
     </Compile>
