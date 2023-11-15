@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"           
+             xmlns:tabs="http://sharpnado.com"
+             xmlns:views="clr-namespace:StudyGuide.Views"
+             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:self="clr-namespace:StudyGuide.ViewModels"
+             x:DataType="self:VM_MainPage"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="StudyGuide.Views.CP_MainPage">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="64" />
+        </Grid.RowDefinitions>
+        <tabs:ViewSwitcher SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}"
+                           Grid.Row="0"
+                               x:Name="Switcher">
+            <ContentView />
+            <views:CV_Settings />
+        </tabs:ViewSwitcher>
+
+        <tabs:TabHostView Grid.Row="1"
+                          HorizontalOptions="FillAndExpand"
+                          TabType="Fixed"
+                          BackgroundColor="{StaticResource SecondaryDark}"
+                          SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"
+                          x:Name="Host">
+            <tabs:TabHostView.Tabs>
+                <tabs:BottomTabItem Label="Übersicht"
+                                    IconImageSource="home.png" />
+                <tabs:TabButton ButtonBackgroundColor="Red"
+                                ButtonCircleSize="64"
+                                ButtonPadding="15"
+                                TranslationY="-10"
+                                IconImageSource="add.png"
+                                TapCommand="{Binding OpenAddCommand}" />
+                <tabs:BottomTabItem Label="Einstellungen"
+                                    IconImageSource="settings.png" />
+            </tabs:TabHostView.Tabs>
+        </tabs:TabHostView>
+
+
+    </Grid>
+
+</ContentPage>

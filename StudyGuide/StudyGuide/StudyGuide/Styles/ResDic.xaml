@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns:tabs="clr-namespace:Sharpnado.Tabs;assembly=Sharpnado.Tabs"
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:b="clr-namespace:StudyGuide.Models"
+                    xmlns:xfc="http://xamarin.com/schemas/2020/toolkit"
+                    x:Class="StudyGuide.ResDic">
+    <!--DefaultColours-->
+    <Color x:Key="Primary">#e2001a</Color>
+    <Color x:Key="Secondary">#797979</Color>
+    <Color x:Key="SecondaryDark">#242424</Color>
+    <Color x:Key="Tertiary">#ff0000</Color>
+    <Color x:Key="Text">#ffffff</Color>
+    <Color x:Key="UI">#5b5b5b</Color>
+    <Color x:Key="Foreground">#393939</Color>
+    <Color x:Key="Background">#2c2c2c</Color>
+    
+    <!--Stlyes-->
+    <Style TargetType="StackLayout" ApplyToDerivedTypes="True">
+        <Setter Property="Spacing" Value="8"/>
+    </Style>
+    <Style TargetType="Grid" ApplyToDerivedTypes="True">
+        <Setter Property="RowSpacing" Value="8"/>
+        <Setter Property="ColumnSpacing" Value="8"/>
+    </Style>
+    <Style TargetType="Label" ApplyToDerivedTypes="True">
+        <Setter Property="TextColor" Value="{StaticResource Text}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    <!--<Style TargetType="b:CButton" ApplyToDerivedTypes="True">
+        <Setter Property="CornerRadius" Value="8"/>
+    </Style>-->
+    <Style TargetType="Button" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{StaticResource UI}"/>
+        <Setter Property="TextColor" Value="{StaticResource Text}"/>
+        <Setter Property="CornerRadius" Value="8"/>
+    </Style>
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{StaticResource Secondary}"/>
+    </Style>
+    <Style TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource Foreground}"/>
+        <Setter Property="CornerRadius" Value="8"/>
+    </Style>
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{StaticResource Background}"/>
+    </Style>
+
+    <Style TargetType="tabs:BottomTabItem">
+        <Setter Property="UnselectedLabelColor" Value="{StaticResource Text}"/>
+        <Setter Property="UnselectedIconColor" Value="{StaticResource Text}"/>
+        <Setter Property="SelectedTabColor" Value="{StaticResource Primary}"/>
+    </Style>
+    
+</ResourceDictionary>

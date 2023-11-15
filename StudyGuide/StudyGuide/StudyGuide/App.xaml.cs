@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StudyGuide.Models;
+using StudyGuide.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,10 +10,18 @@ namespace StudyGuide
     {
         public App(string folderpath)
         {
+            // Initialize
             InitializeComponent();
             Sharpnado.Tabs.Initializer.Initialize(false, true);
 
-            MainPage = null;
+            // Setup Singleton
+            Singleton.Instance.FolderPath = folderpath;
+
+            // Navigation
+            MainPage = new CP_MainPage();
+
+            // Add Navigation
+            Navigation.Instance = MainPage.Navigation;
         }
 
         protected override void OnStart()

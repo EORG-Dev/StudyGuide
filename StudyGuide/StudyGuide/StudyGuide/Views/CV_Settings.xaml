@@ -1,0 +1,85 @@
+﻿<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudyGuide.Views.CV_Settings">
+    <ContentView.Resources>
+        <Style TargetType="Label" x:Key="LBL_Row">
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+        <Style TargetType="Grid" x:Key="GRD_Row">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="ColumnDefinitions" Value="128,*"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LBL_Header">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+        </Style>
+    </ContentView.Resources>
+    <ContentView.Content>
+
+        <Grid>
+            <StackLayout>
+                <Label Text="Einstellungen"
+                      HorizontalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                    HeightRequest="96" Margin="0,24,0,18" />
+
+                <!--Dienst-->
+                <Frame Margin="16,16,16,8" VerticalOptions="Start">
+                    <StackLayout Spacing="8">
+                        <Label Text="Anwendende Person"
+                           Style="{StaticResource LBL_Header}"/>
+                        <!--Name-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Name"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Entry x:Name="ENT_Name"
+                                   Placeholder="Mustermann"
+                                   Grid.Column="1"
+                                   HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                        <!--Name-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Vorname"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Entry x:Name="ENT_Vorname"
+                                   Placeholder="Max"
+                                   Grid.Column="1"
+                                   HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                        <!--Jahrgang-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Zugehörigkeit"
+                                   Style="{StaticResource LBL_Row}"/>
+                            <Entry x:Name="ENT_Zugehorigkeit"
+                                   Placeholder="Einrichtung"
+                                   Grid.Column="1"
+                                   HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                    
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <ImageButton 
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="EndAndExpand"
+                Margin="16"
+                Padding="16"
+                CornerRadius="32"
+                HeightRequest="64"
+                WidthRequest="64"
+                x:Name="BTN_Save"
+                Clicked="BTN_Save_Clicked"
+                BackgroundColor="Green"
+                Source="save.png"/>
+        </Grid>
+        
+       
+        
+    </ContentView.Content>
+  
+</ContentView>
