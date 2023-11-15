@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Sharpnado.Tabs" Version="2.2.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
@@ -29,6 +30,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Styles\ResDic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CV_Einsatz.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CV_Settings.xaml">

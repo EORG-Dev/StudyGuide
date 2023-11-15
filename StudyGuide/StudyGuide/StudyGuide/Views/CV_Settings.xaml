@@ -41,7 +41,7 @@
                                    Grid.Column="1"
                                    HorizontalOptions="FillAndExpand"/>
                         </Grid>
-                        <!--Name-->
+                        <!--Vorname-->
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Vorname"
                                    Style="{StaticResource LBL_Row}"/>
@@ -50,7 +50,7 @@
                                    Grid.Column="1"
                                    HorizontalOptions="FillAndExpand"/>
                         </Grid>
-                        <!--Jahrgang-->
+                        <!--Zugehörigkeit-->
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Zugehörigkeit"
                                    Style="{StaticResource LBL_Row}"/>

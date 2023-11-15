@@ -17,7 +17,7 @@
         <tabs:ViewSwitcher SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}"
                            Grid.Row="0"
                                x:Name="Switcher">
-            <ContentView />
+            <views:CV_Einsatz />
             <views:CV_Settings />
         </tabs:ViewSwitcher>
 
