@@ -8,7 +8,7 @@ namespace StudyGuide.Models
     public class Singleton
     {
         private static readonly object padlock = new object();
-        public static Singleton _instance;
+        static Singleton _instance;
         public static Singleton Instance
         {
             get
@@ -43,6 +43,13 @@ namespace StudyGuide.Models
             get
             {
                 return Path.Combine(FolderPath, "settings.xml");
+            }
+        }
+        public string TemplateFilePath
+        {
+            get
+            {
+                return Path.Combine(FolderPath, "template.xlsx");
             }
         }
         public void TriggerNavBackEvent()

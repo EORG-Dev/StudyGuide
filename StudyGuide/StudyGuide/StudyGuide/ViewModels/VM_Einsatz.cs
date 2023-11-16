@@ -111,8 +111,10 @@ namespace StudyGuide.ViewModels
         {
             try
             {
-                App.Current.MainPage.DisplayAlert("Achtung", "Hier fehlt ein Feature :)", "Abbrechen");
+                //App.Current.MainPage.DisplayAlert("Achtung", "Hier fehlt ein Feature :)", "Abbrechen");
                 // Build File
+                var list = Srv_Data.GetAll<C_Einsatz>().ToList();
+                await SRV_Export.ExportEntries(list);
                 /*EinsatzExport exp = new EinsatzExport();
                 exp.Entries = Srv_Data.GetAll<C_Einsatz>().ToList();
                 exp.DBOptions = Resources.Tree;

@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.102.1" />
     <PackageReference Include="Sharpnado.Tabs" Version="2.2.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
@@ -19,12 +20,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\Ressources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Ressources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\CP_MainPage.xaml.cs">
       <DependentUpon>CP_MainPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Ressources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Ressources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Styles\ResDic.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
