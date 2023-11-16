@@ -59,6 +59,20 @@ namespace StudyGuide.Models
         #endregion Patient
         #region Tatigkeiten
         // Hier Liste mit Beobachtungen, dafür neue Klasse
+        [DataMember]
+        public string Beobachtungen_Blob { get; set; }
+        [Ignore]
+        public List<C_Beobachtung> Beobachtungen
+        {
+            get
+            {
+                return C_Beobachtung.ListFromBlob(Beobachtungen_Blob);
+            } 
+            set
+            {
+                Beobachtungen_Blob = C_Beobachtung.BlobFromList(value);
+            }
+        }
         #endregion Tatigkeiten
         #region Auswertung
         [DataMember]
@@ -69,26 +83,30 @@ namespace StudyGuide.Models
         #endregion Auswertung
         #region Sonstiges
         #endregion Sonstiges
-        List<int> GetBlob(string s)
+        /*List<string> GetBlob(string s)
         {
-            var listi = new List<int>();
-            var lists = s?.Split(',').ToList();
-            lists?.ForEach(X => listi.Add(Convert.ToInt16(X)));
+            var listi = new List<string>();
+            var lists = s?.Split(';').ToList();
+            lists?.ForEach(X => listi.Add(X));
             return listi;
         }
-        string SetBlob(List<int> value)
+        string SetBlob(List<string> value)
         {
             if (value != null && value.Count > 0)
             {
+                foreach (var item in value)
+                {
+                    item.Replace(';', ' ');
+                }
                 string s = "";
-                value.ForEach(X => s += $"{X},");
+                value.ForEach(X => s += $"{X};");
                 return s.Remove(s.Length - 1);
             }
             else
             {
                 return null;
             }
-        }
+        }*/
     }
     [DataContract]
     public class EinsatzExport

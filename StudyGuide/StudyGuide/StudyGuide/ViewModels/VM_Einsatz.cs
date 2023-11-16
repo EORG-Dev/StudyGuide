@@ -115,16 +115,6 @@ namespace StudyGuide.ViewModels
                 // Build File
                 var list = Srv_Data.GetAll<C_Einsatz>().ToList();
                 await SRV_Export.ExportEntries(list);
-                /*EinsatzExport exp = new EinsatzExport();
-                exp.Entries = Srv_Data.GetAll<C_Einsatz>().ToList();
-                exp.DBOptions = Resources.Tree;
-                exp.Save(App.FolderPath + @"/tempexp.xml");
-                //Share file
-                await Share.RequestAsync(new ShareFileRequest
-                {
-                    Title = "Wählen Sie ein Programm zum Teilen der Datenbank",
-                    File = new ShareFile(App.FolderPath + @"/tempexp.xml")
-                });*/
             } catch (Exception ex)
             {
                 App.Current.MainPage.DisplayAlert("Fehler!", ex.Message, "Ok");
