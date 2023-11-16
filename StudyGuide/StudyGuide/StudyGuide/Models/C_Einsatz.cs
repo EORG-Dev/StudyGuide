@@ -34,6 +34,8 @@ namespace StudyGuide.Models
         #endregion ED
         #region SSS
         [DataMember]
+        public string Name { get; set; }
+        [DataMember]
         public string Alarmtext { get; set; }
         [DataMember]
         public string Einsatzort { get; set; }  
@@ -45,6 +47,15 @@ namespace StudyGuide.Models
         public string Geschlecht { get; set; } = "";
         [DataMember]
         public int Alter { get; set; } = -1;
+        [Ignore]
+        public string AlterGeschlecht
+        {
+            get
+            {
+                return Geschlecht.ToUpper() + Alter.ToString();
+            }
+        }
+            
         #endregion Patient
         #region Tatigkeiten
         // Hier Liste mit Beobachtungen, dafür neue Klasse
@@ -54,6 +65,7 @@ namespace StudyGuide.Models
         public string RDVersorgung { get; set; }
         [DataMember]
         public string EinweisungDurch { get; set; } = "";
+        
         #endregion Auswertung
         #region Sonstiges
         #endregion Sonstiges

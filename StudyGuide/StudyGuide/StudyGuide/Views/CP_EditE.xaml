@@ -71,19 +71,25 @@
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Rettungswache"
                                    Style="{StaticResource LBL_Row}"/>
-                            <Button x:Name="BTN_ED_RW"
-                                   Command="{Binding SelectionCommand}"
-                                   CommandParameter="{x:Reference BTN_ED_RW}">
-                            </Button>
+                            <Entry Text="{Binding Base.Standort}"
+                                   Placeholder="FuRW 1,..."
+                                   Grid.Column="1" />
                         </Grid>
                         <!--RM-->
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Rettungsmittel"
-                                   Style="{StaticResource LBL_Row}"/>
-                            <Button x:Name="BTN_ED_RM"
-                                   Command="{Binding SelectionCommand}"
-                                   CommandParameter="{x:Reference BTN_ED_RM}">
-                            </Button>
+                                   Style="{StaticResource LBL_Row}" />
+                            <Entry Text="{Binding Base.Rettungsmittel}"
+                                   Placeholder="RTW,..."
+                                   Grid.Column="1"/>
+                        </Grid>
+                        <!--Beobachter-->
+                        <Grid Style="{StaticResource GRD_Row}">
+                            <Label Text="Beobachter"
+                                   Style="{StaticResource LBL_Row}" />
+                            <Entry Text="{Binding Base.Name}"
+                                   Placeholder="Name"
+                                   Grid.Column="1" />
                         </Grid>
                     </StackLayout>
                 </Frame>
@@ -98,31 +104,28 @@
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Alarmtext"
                                    Style="{StaticResource LBL_Row}"/>
-                            <Button x:Name="BTN_ED_S"
-                                   Command="{Binding SelectionCommand}"
-                                   CommandParameter="{x:Reference BTN_ED_S}">
-                            </Button>
+                            <Entry Text="{Binding Base.Alarmtext}"
+                                   Placeholder="R1-Trauma ..."
+                                   Grid.Column="1" />
                         </Grid>
                         <!--Einsatzort-->
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Einsatzort"
                                    Style="{StaticResource LBL_Row}"/>
-                            <Button x:Name="BTN_ED_Est"
-                                   CommandParameter="{x:Reference BTN_ED_Est}">
-                            </Button>
+                            <Entry Text="{Binding Base.Einsatzort}"
+                                   Placeholder="Wohnung,..."
+                                   Grid.Column="1" />
                         </Grid>
                         <!--Situation-->
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Situation"
                                    Style="{StaticResource LBL_Row}"/>
-                            <Button x:Name="BTN_ED_Sit"
-                                   Command="{Binding SelectionCommand}"
-                                   CommandParameter="{x:Reference BTN_ED_Sit}">
-                            </Button>
+                            <Entry Text="{Binding Base.Situation}"
+                                   Placeholder="Pat. auf Sofa,..."
+                                   Grid.Column="1" />
                         </Grid>
                     </StackLayout>
                 </Frame>
-
             
                 <!--Demografik-->
                 <Frame 
@@ -134,10 +137,10 @@
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Geschlecht"
                                    Style="{StaticResource LBL_Row}"/>
-                            <Button x:Name="BTN_PD_Geschlecht"
-                                   Command="{Binding SelectionCommand}"
-                                   CommandParameter="{x:Reference BTN_PD_Geschlecht}">
-                            </Button>
+                            <Button x:Name="BTN_geschlecht"
+                                    Grid.Column="1"
+                                    Command="{Binding SelectionCommand}"
+                                    CommandParameter="{x:Reference BTN_geschlecht}" />
                         </Grid>
                         <!--Alter-->
                         <Grid Style="{StaticResource GRD_Row}">
@@ -171,22 +174,18 @@
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Versorgung"
                                    Style="{StaticResource LBL_Row}"/>
-                            <Button x:Name="BTN_AW_RDversorg"
-                                   Command="{Binding SelectionCommand}"
-                                   CommandParameter="{x:Reference BTN_AW_RDversorg}">
-                            </Button>
+                            <Entry Text="{Binding Base.RDVersorgung}"
+                                   Placeholder="Trsp. in UKD,..."
+                                   Grid.Column="1" />
                         </Grid>
-                        <!--Trsp mit SoSi-->
+                        <!--Einweisung-->
                         <Grid Style="{StaticResource GRD_Row}">
                             <Label Text="Einweisung durch"
                                    Style="{StaticResource LBL_Row}"/>
-                            <StackLayout Grid.Column="1"
-                                         RadioButtonGroup.GroupName="Einweisung"
-                                         RadioButtonGroup.SelectedValue="{Binding Base.EinweisungDurch, Mode=TwoWay}">
-                                <RadioButton Value="BTN1" />
-                                <RadioButton Value="BTN2" />
-                                <RadioButton Value="BTN3" />
-                            </StackLayout>
+                            <Button x:Name="BTN_Trsp"
+                                    Grid.Column="1"
+                                    Command="{Binding SelectionCommand}"
+                                    CommandParameter="{x:Reference BTN_Trsp}" />
                         </Grid>
                     </StackLayout>
                 </Frame>

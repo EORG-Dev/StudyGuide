@@ -49,20 +49,21 @@
                                         <RowDefinition Height="24" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="100" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="48" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding S_Datum, StringFormat='Tag: {0:D}'}"
+                                    <Label Text="{Binding S_Datum, StringFormat='{0:D}'}"
                                            Grid.Row="0" />
-                                    <Label Text="???"
+                                    <Label Text="{Binding AlterGeschlecht}"
                                            Grid.Row="1" />
-                                    <Label Text="STICHWORT GESAMT"
+                                    <Label Text="{Binding Alarmtext, StringFormat='Alarm: {0}'}"
+                                           Grid.ColumnSpan="3"
                                            Grid.Row="2" />
-                                    <Label Text="ALT.GESC"
+                                    <Label Text="Einträge: "
                                            Grid.Row="0"
                                            Grid.Column="1" />
-                                    <Label Text="EZD"
+                                    <Label Text="{Binding RDVersorgung, StringFormat='Ergebnis:'}"
                                            Grid.Row="1"
                                            Grid.Column="1"
                                            Grid.RowSpan="2" />

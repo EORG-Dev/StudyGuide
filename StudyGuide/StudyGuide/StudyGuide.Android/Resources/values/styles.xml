@@ -9,10 +9,25 @@
     <!-- Set theme colors from https://aka.ms/material-colors -->
     <!-- colorPrimary is used for the default action bar background -->
     <!--<item name="colorPrimary">#2196F3</item>-->
-    <!-- colorPrimaryDark is used for the status bar -->
+	  <!-- colorPrimaryDark is used for the status bar -->
     <!--<item name="colorPrimaryDark">#1976D2</item>-->
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <!--<item name="colorAccent">#FF4081</item>-->
+	  <item name="android:datePickerDialogTheme">@style/CustomDatePickerDialog</item>
+	  <item name="colorPrimary">#797979</item>
+	  <item name="colorPrimaryDark">#242424</item>
+	  <item name="colorAccent">#e2001a</item>
+	  
+	  
   </style>
+
+	<style name="CustomDatePickerDialog" parent="ThemeOverlay.AppCompat.Dialog">
+		<!--selected day-->
+		<item name="android:colorControlActivated">#e2001a</item>
+		<!--body background-->
+		<item name="android:windowBackground">#393939</item>
+		<!--cancel&ok-->
+		<item name="android:textColor">#e2001a</item>
+	</style>
 </resources>

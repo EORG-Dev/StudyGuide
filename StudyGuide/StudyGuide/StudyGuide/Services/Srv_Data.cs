@@ -34,6 +34,7 @@ namespace StudyGuide.Services
             var neu = new C_Einsatz();
             neu.Standort = last.Standort;
             neu.Rettungsmittel = last.Rettungsmittel;
+            neu.Name = last.Name;
 
             // return new
             return neu;
