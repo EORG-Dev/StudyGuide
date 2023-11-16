@@ -138,9 +138,10 @@
                             <Label Text="Geschlecht"
                                    Style="{StaticResource LBL_Row}"/>
                             <Button x:Name="BTN_geschlecht"
+                                    Text="{Binding Base.Geschlecht, Mode=TwoWay}"
                                     Grid.Column="1"
-                                    Command="{Binding SelectionCommand}"
-                                    CommandParameter="{x:Reference BTN_geschlecht}" />
+                                    CommandParameter="{x:Reference BTN_geschlecht}"
+                                    Command="{Binding SelectionSexCommand}" />
                         </Grid>
                         <!--Alter-->
                         <Grid Style="{StaticResource GRD_Row}">
@@ -183,9 +184,10 @@
                             <Label Text="Einweisung durch"
                                    Style="{StaticResource LBL_Row}"/>
                             <Button x:Name="BTN_Trsp"
+                                    Text="{Binding Base.EinweisungDurch, Mode=TwoWay}"
                                     Grid.Column="1"
-                                    Command="{Binding SelectionCommand}"
-                                    CommandParameter="{x:Reference BTN_Trsp}" />
+                                    CommandParameter="{x:Reference BTN_Trsp}"
+                                    Command="{Binding SelectionEinweisungCommand}" />
                         </Grid>
                     </StackLayout>
                 </Frame>

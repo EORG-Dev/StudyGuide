@@ -10,7 +10,7 @@ namespace StudyGuide.Droid
 {
     [Activity(
         Label = "StudyGuide", 
-        // Icon = "@mipmap/icon", 
+        Icon = "@drawable/icon", 
         Theme = "@style/MainTheme", 
         MainLauncher = true, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]

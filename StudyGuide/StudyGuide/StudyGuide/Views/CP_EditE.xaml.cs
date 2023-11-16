@@ -13,6 +13,9 @@ namespace StudyGuide.Views
 
             var bc = new VM_EditE(init, isEdit);
             BindingContext = bc;
+
+            // BTN_geschlecht.Text = init.Geschlecht;
+            // BTN_Trsp.Text = init.RDVersorgung;
         }
     }
 }

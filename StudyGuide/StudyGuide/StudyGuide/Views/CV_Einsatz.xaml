@@ -54,19 +54,23 @@
                                         <ColumnDefinition Width="48" />
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{Binding S_Datum, StringFormat='{0:D}'}"
+                                           LineBreakMode="TailTruncation"
                                            Grid.Row="0" />
                                     <Label Text="{Binding AlterGeschlecht}"
+                                           LineBreakMode="TailTruncation"
                                            Grid.Row="1" />
                                     <Label Text="{Binding Alarmtext, StringFormat='Alarm: {0}'}"
-                                           Grid.ColumnSpan="3"
+                                           LineBreakMode="TailTruncation"
+                                           Grid.ColumnSpan="2"
                                            Grid.Row="2" />
                                     <Label Text="Einträge: "
+                                           LineBreakMode="TailTruncation"
                                            Grid.Row="0"
                                            Grid.Column="1" />
-                                    <Label Text="{Binding RDVersorgung, StringFormat='Ergebnis:'}"
+                                    <Label Text="{Binding RDVersorgung, StringFormat='Ergebnis: {0}'}"
+                                           LineBreakMode="TailTruncation"
                                            Grid.Row="1"
-                                           Grid.Column="1"
-                                           Grid.RowSpan="2" />
+                                           Grid.Column="1"/>
                                     <Grid Grid.Column="2"
                                           Grid.RowSpan="3">
                                         <Grid.RowDefinitions>
@@ -98,18 +102,19 @@
         </ScrollView>
 
         <!--Controls-->
-        <StackLayout  HorizontalOptions="EndAndExpand"
+        <StackLayout  Grid.Row="1"
+                      HorizontalOptions="EndAndExpand"
                       VerticalOptions="EndAndExpand"
                       Orientation="Vertical"
                       Padding="0,0,16,16"
                       Spacing="8">
             <!--<ImageButton 
-                Source="reset.png"
+               Source="reset.png"
                 Command="{Binding NewEntryCommand}"/>-->
-            <!--<ImageButton 
+            <ImageButton 
             Source="upload.png"
                 Command="{Binding ExportCommand}"/>
-            <ImageButton 
+                <!--<ImageButton 
             Source="folder.png"
                 Command="{Binding ImportCommand}"/>-->
         </StackLayout>

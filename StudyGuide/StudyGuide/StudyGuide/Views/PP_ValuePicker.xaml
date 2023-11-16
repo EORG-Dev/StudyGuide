@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="StudyGuide.Views.PP_ValuePicker">
+    <Grid Margin="8"
+          HorizontalOptions="Center"
+          VerticalOptions="End">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="75"/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="EDI_number"
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="4"
+                    Text="-1"
+                    FontAttributes="Bold" 
+               FontSize="25"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+
+        <Button x:Name="B1" Text="1" Grid.Row="1" Grid.Column="0" Clicked="B1_Clicked"/>
+        <Button x:Name="B2" Text="2" Grid.Row="1" Grid.Column="1" Clicked="B2_Clicked"/>
+        <Button x:Name="B3" Text="3" Grid.Row="1" Grid.Column="2" Clicked="B3_Clicked"/>
+
+        <Button x:Name="B4" Text="4" Grid.Row="2" Grid.Column="0" Clicked="B4_Clicked"/>
+        <Button x:Name="B5" Text="5" Grid.Row="2" Grid.Column="1" Clicked="B5_Clicked"/>
+        <Button x:Name="B6" Text="6" Grid.Row="2" Grid.Column="2" Clicked="B6_Clicked"/>
+
+        <Button x:Name="B7" Text="7" Grid.Row="3" Grid.Column="0" Clicked="B7_Clicked"/>
+        <Button x:Name="B8" Text="8" Grid.Row="3" Grid.Column="1" Clicked="B8_Clicked"/>
+        <Button x:Name="B9" Text="9" Grid.Row="3" Grid.Column="2" Clicked="B9_Clicked"/>
+
+        <Button x:Name="BAbbr" Text="Abbr." Grid.Row="4" Grid.Column="0" Clicked="BAbbr_Clicked"  Style="{DynamicResource BTN_Red}" BackgroundColor="{DynamicResource Button_cancel}"/>
+        <Button x:Name="B0" Text="0" Grid.Row="4" Grid.Column="1" Clicked="B0_Clicked"/>
+        <Button x:Name="BOK" Text="OK" Grid.Row="4" Grid.Column="2" 
+                    Grid.ColumnSpan="2" Clicked="BOK_Clicked" BackgroundColor="DarkGreen"/>
+        <Button x:Name="Cancel" Text="Zurück" Grid.Row="1" Grid.Column="3"
+                Clicked="Cancel_Clicked"  BackgroundColor="{StaticResource Primary}"/>
+        <Button x:Name="BDelete" Text="CE" Grid.Row="2" Grid.Column="3"
+                    Grid.RowSpan="2" Clicked="BDelete_Clicked" BackgroundColor="{StaticResource Primary}"/>
+    </Grid>
+</ContentPage>
