@@ -63,7 +63,7 @@
                                            LineBreakMode="TailTruncation"
                                            Grid.ColumnSpan="2"
                                            Grid.Row="2" />
-                                    <Label Text="Einträge: "
+                                    <Label Text="{Binding Beobachtungen_Count, StringFormat='Einträge: {0} Stk.'}"
                                            LineBreakMode="TailTruncation"
                                            Grid.Row="0"
                                            Grid.Column="1" />

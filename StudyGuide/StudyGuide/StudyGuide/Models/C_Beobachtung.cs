@@ -11,14 +11,33 @@ namespace StudyGuide.Models
         #region Variablen
         public string ID { get; set; } = SRV_Random.RandomString(4);
         // Zeit
-        public long Zeitpunkt { get; set; }
+        public long Zeitpunkt { get; set; } = DateTime.Now.TimeOfDay.Ticks;
+        public TimeSpan TS_Zeitpunkt
+        {
+            get
+            {
+                return new TimeSpan(Zeitpunkt);
+            } set
+            {
+                Zeitpunkt = value.Ticks;
+            }
+        }
+        public string S_Zeitpunkt
+        {
+            get
+            {
+                if (Zeitpunkt == 0)
+                    return "--:--";
+                return new DateTime(Zeitpunkt).ToString("HH:mm");
+            }
+        }
         public string Phase { get; set; }
         public string ZeitBeschreibung { get; set; }
         // Handlung
-        public string A_Akteur { get; set; }
+        public string A_Akteur { get; set; } = "Akteur";
         public string A_Bemerkung { get; set; }
         // Anlass
-        public string B_Akteur{ get; set; }
+        public string B_Akteur{ get; set; } = "Akteur";
         public string B_Bemerkung { get; set; }
         // Anlass
         public string C_Bemerkung { get; set; }
@@ -53,13 +72,12 @@ namespace StudyGuide.Models
                     beob.S_Bemerkung = beob_splits[10];
                     // Add to List
                     res.Add(beob);
-                    return res;
                 }
-            }catch (Exception ex)
+                return res;
+            } catch (Exception ex)
             {
-
             }
-            return null;
+            return new List<C_Beobachtung>();
         }
         public static string BlobFromList(List<C_Beobachtung> values)
         {
@@ -85,8 +103,8 @@ namespace StudyGuide.Models
                     res += beob_s;
                     res += ";";
                 }
-                res.Remove(res.Length-1);
-                return res;
+                int index = res.Length - 1;
+                return res.Remove(index);
 
             } catch (Exception ex)
             {
@@ -96,7 +114,7 @@ namespace StudyGuide.Models
         }
         static string Cln(string str)
         {
-            return str.Replace(',', ' ').Replace(';', ' ');
+            return str?.Replace(',', ' ').Replace(';', ' ') ?? "";
         }
         #endregion Methodes
     }

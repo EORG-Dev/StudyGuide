@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:b="clr-namespace:StudyGuide.Models"
              xmlns:self="clr-namespace:StudyGuide.ViewModels"
+             xmlns:models="clr-namespace:StudyGuide.Models"
              x:DataType="self:VM_EditE"
              x:Class="StudyGuide.Views.CP_EditE"
              NavigationPage.HasNavigationBar="False"
+             x:Name="CP_Self"
              Title="CP_EditE">
     <ContentPage.Resources>
         <Style TargetType="Label" x:Key="LBL_Row">
@@ -38,6 +40,13 @@
             <Setter Property="HeightRequest" Value="64"/>
             <Setter Property="WidthRequest" Value="64"/>
             <Setter Property="BackgroundColor" Value="{StaticResource UI}"/>
+        </Style>
+        <Style TargetType="ImageButton"
+               x:Key="IBTN_Sec">
+            <Setter Property="Padding"
+                    Value="6" />
+            <Setter Property="BackgroundColor"
+                    Value="Transparent" />
         </Style>
     </ContentPage.Resources>
     <Grid>
@@ -155,15 +164,93 @@
                     </StackLayout>
                 </Frame>
                 
-                <!--Patientenversorgung-->
+                <!--Tätigkeiten/Handlungen/Etc.-->
                 <Frame 
                    Margin="16,16,16,8" VerticalOptions="Start">
                     <StackLayout Spacing="8">
-                        <Label Text="Patientenversorgung"
+                        <Label Text="Beobachtung"
                            Style="{StaticResource LBL_Header}"/>
-                        <!--Diagnosen-->
+                        <!--Beobachtungen-->
+                        <ImageButton Source="plus.png"
+                                     CornerRadius="8"
+                                     Command="{Binding AddCommand}"
+                                     HeightRequest="48" />
                     </StackLayout>
                 </Frame>
+
+                <!--Collection-->
+                <!--Data-->
+                <CollectionView SelectionMode="None"
+                                VerticalScrollBarVisibility="Never"
+                                Margin="16,8,16,16"
+                                ItemsSource="{Binding List, Mode=OneWay}"
+                                x:Name="CollectionV">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:C_Beobachtung">
+                            <Frame HasShadow="False"
+                                   Padding="12,8,12,8">
+                                <Grid ColumnDefinitions="*,48">
+                                    <StackLayout>
+                                        <!--Zeit-->
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Phase, StringFormat='{0} - '}"
+                                                   FontAttributes="Bold"/>
+                                            <Label Text="{Binding S_Zeitpunkt, StringFormat='{0} Uhr'}"
+                                                   FontAttributes="Bold" />
+                                        </StackLayout>
+                                        <Label Text="{Binding ZeitBeschreibung}" />
+                                        <!--A-->
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="A" 
+                                                   FontAttributes="Bold"/>
+                                            <Label Text="{Binding A_Akteur, StringFormat='{0}:'}" />
+                                            <Label Text="{Binding A_Bemerkung}" />
+                                        </StackLayout>
+                                        <!--B-->
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="B"
+                                                   FontAttributes="Bold" />
+                                            <Label Text="{Binding B_Akteur, StringFormat='{0}:'}" />
+                                            <Label Text="{Binding B_Bemerkung}" />
+                                        </StackLayout>
+                                        <!--C-->
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="C"
+                                                   FontAttributes="Bold" />
+                                            <Label Text="{Binding C_Bemerkung}" />
+                                        </StackLayout>
+                                        <!--S-->
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Symb."
+                                                   FontAttributes="Bold" />
+                                            <Label Text="{Binding S_Symbol, StringFormat='{0}:'}" />
+                                            <Label Text="{Binding S_Bemerkung}" />
+                                        </StackLayout>
+                                        
+                                    </StackLayout>
+                                    <!--Buttons-->
+                                    <StackLayout VerticalOptions="End"
+                                                 Grid.Column="1">
+                                        <ImageButton Source="edit.png"
+                                                     Style="{StaticResource IBTN_Sec}"
+                                                     Command="{Binding BindingContext.EditCommand, Source={x:Reference CP_Self}}"
+                                                     CommandParameter="{Binding ID}" />
+                                        <ImageButton Source="delete.png"
+                                                     Style="{StaticResource IBTN_Sec}"
+                                                     Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CP_Self}}"
+                                                     CommandParameter="{Binding ID}" />
+                                        
+                                    </StackLayout>
+                                </Grid>
+                                
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                           ItemSpacing="4" />
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
 
                 <!--Auswertung-->
                 <Frame 

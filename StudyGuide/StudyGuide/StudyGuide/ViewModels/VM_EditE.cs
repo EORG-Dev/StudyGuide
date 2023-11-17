@@ -3,6 +3,7 @@ using StudyGuide.Services;
 using StudyGuide.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,15 +17,32 @@ namespace StudyGuide.ViewModels
         {
             Base = init;
             IsEdit = isEdit;
+            List = new ObservableCollection<C_Beobachtung>(Base.Beobachtungen ?? new List<C_Beobachtung>());
+
+            Singleton.Instance.OnAddEntry += (s, e) =>
+            {
+                var entry = s as C_Beobachtung;
+                List?.Add(entry);
+            };
         }
-        C_Einsatz _base;
         bool IsEdit;
+        C_Einsatz _base;
         public C_Einsatz Base
         {
             get { return _base; }
             set 
             { 
                 _base = value; 
+                OnPropertyChanged();
+            }
+        }
+        ObservableCollection<C_Beobachtung> _list;
+        public ObservableCollection<C_Beobachtung> List
+        {
+            get { return _list; }
+            set
+            {
+                _list = value;
                 OnPropertyChanged();
             }
         }
@@ -96,6 +114,52 @@ namespace StudyGuide.ViewModels
             });
             Navigation.Instance.PushAsync(p);
         }
+        Command _AddCommand;
+        public Command AddCommand
+        {
+            get
+            {
+                return _AddCommand ?? (_AddCommand = new Command(ExecuteAddCommand));
+            }
+        }
+        async void ExecuteAddCommand(object param)
+        {
+            var cp = new CP_EditBeob(new C_Beobachtung(), false);
+            Navigation.Instance.PushAsync(cp);
+        }
+        Command _DeleteCommand;
+        public Command DeleteCommand
+        {
+            get
+            {
+                return _DeleteCommand ?? (_DeleteCommand = new Command(ExecuteDeleteCommand));
+            }
+        }
+        async void ExecuteDeleteCommand(object param)
+        {
+            bool answer = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Löschen?", "Möchtest du den Eintrag wirklich löschen?", "Ja", "Nein");
+            if (answer)
+            {
+                string id = param as string;
+                var item = List.Where(X => X.ID == id).FirstOrDefault();
+                List.Remove(item);
+            }
+        }
+        Command _EditCommand;
+        public Command EditCommand
+        {
+            get
+            {
+                return _EditCommand ?? (_EditCommand = new Command(ExecuteEditCommand));
+            }
+        }
+        async void ExecuteEditCommand(object param)
+        {
+            string id = param as string;
+            var item = List.Where(X => X.ID == id).FirstOrDefault();
+            var edit = new CP_EditBeob(item, true);
+            Navigation.Instance.PushAsync(edit);
+        }
         Command _CloseCommand;
         public Command CloseCommand
         {
@@ -106,9 +170,16 @@ namespace StudyGuide.ViewModels
         }
         async void ExecuteCloseCommand(object param)
         {
-            Navigation.Instance.PopToRootAsync();
+            if (!IsEdit)
+            {
+                var res = await App.Current.MainPage.DisplayAlert("Abbrechen?", "Möchtest du das Erstellen einer Einsatzdokumentation wirklich abbrechen?", "Ja", "Nein");
+                if (!res)
+                    return;
+            }
+            Navigation.Instance.PopAsync();
             Singleton.Instance.TriggerNavBackEvent();
         }
+
         Command _SaveCommand;
         public Command SaveCommand
         {
@@ -119,6 +190,10 @@ namespace StudyGuide.ViewModels
         }
         async void ExecuteSaveCommand(object param)
         {
+            // add Beobachtungen to base
+            Base.Beobachtungen = _list.ToList();
+
+            // Save whole
             if (IsEdit)
             {
                 Srv_Data.InsertOrReplace<C_Einsatz>(Base);
@@ -126,7 +201,7 @@ namespace StudyGuide.ViewModels
             {
                 Srv_Data.Insert<C_Einsatz>(Base);
             }
-            Navigation.Instance.PopToRootAsync();
+            Navigation.Instance.PopAsync();
             Singleton.Instance.TriggerNavBackEvent();
         }
         #endregion Commands

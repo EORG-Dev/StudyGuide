@@ -25,6 +25,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Ressources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\CP_EditBeob.xaml.cs">
+      <DependentUpon>CP_EditBeob.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\CP_MainPage.xaml.cs">
       <DependentUpon>CP_MainPage.xaml</DependentUpon>
     </Compile>
@@ -36,6 +39,9 @@
       <LastGenOutput>Ressources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Styles\ResDic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CP_EditBeob.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CP_EditE.xaml">

@@ -22,7 +22,6 @@ namespace StudyGuide.ViewModels
                 LoadData();
             };
         }
-        ObservableCollection<C_Einsatz> _dataSource;
         void LoadData()
         {
             try
@@ -48,6 +47,7 @@ namespace StudyGuide.ViewModels
                 App.Current.MainPage.DisplayAlert("Fehler", ex.Message, "Abbrechen");
             }
         }
+        ObservableCollection<C_Einsatz> _dataSource;
         public ObservableCollection<C_Einsatz> DataSource
         {
             get => _dataSource;
@@ -111,6 +111,12 @@ namespace StudyGuide.ViewModels
         {
             try
             {
+                var res = await App.Current.MainPage.DisplayAlert("Exportieren", "Mit dieser Funktion kannst du deine Beobachtungsergebnisse exportieren und mit deiner Mail-App teilen, um sie deinem Ansprechpartner zuzusenden. Möchtest du fortfahren?", "Ja", "Nein");
+                if (res)
+                {
+                    Navigation.Instance.PopAsync();
+                    Singleton.Instance.TriggerNavBackEvent();
+                }
                 //App.Current.MainPage.DisplayAlert("Achtung", "Hier fehlt ein Feature :)", "Abbrechen");
                 // Build File
                 var list = Srv_Data.GetAll<C_Einsatz>().ToList();

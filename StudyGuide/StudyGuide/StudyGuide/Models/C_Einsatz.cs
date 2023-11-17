@@ -73,6 +73,14 @@ namespace StudyGuide.Models
                 Beobachtungen_Blob = C_Beobachtung.BlobFromList(value);
             }
         }
+        [Ignore]
+        public int Beobachtungen_Count
+        {
+            get
+            {
+                return Beobachtungen.Count;
+            }
+        }
         #endregion Tatigkeiten
         #region Auswertung
         [DataMember]

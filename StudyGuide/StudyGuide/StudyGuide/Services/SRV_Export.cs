@@ -75,7 +75,18 @@ namespace StudyGuide.Services
                 worksheet.Cell("K5").Value = entry.EinweisungDurch;
 
                 // -- Tabelle ---
-                // To Be Added
+                int row = 12;
+                foreach (var s in entry.Beobachtungen ?? new List<C_Beobachtung>())
+                {
+                    //
+                    worksheet.Cell($"A{row}").Value = $"{s.Phase} - {s.S_Zeitpunkt} - {s.ZeitBeschreibung}";
+                    worksheet.Cell($"B{row}").Value = $"{s.A_Akteur} - {s.A_Bemerkung}";
+                    worksheet.Cell($"F{row}").Value = $"{s.B_Akteur} - {s.B_Bemerkung}";
+                    worksheet.Cell($"L{row}").Value = $"{s.C_Bemerkung}";
+                    worksheet.Cell($"N{row}").Value = $"{s.S_Symbol} - {s.S_Bemerkung}";
+                    //
+                    row++;
+                }
             }
 
             // Remove Template
@@ -83,7 +94,7 @@ namespace StudyGuide.Services
 
             //save
             //filename
-            string FilePath = FolderPath + "Export_" + RandomString(3) + "_" + DateTime.Now.ToString("yyyy'-'MM'-'dd");
+            string FilePath = FolderPath + "Export_" + SRV_Random.RandomString(3) + "_" + DateTime.Now.ToString("yyyy'-'MM'-'dd");
             if (Title != "" && Title.Length < 48)
             {
                 FilePath += "_" + Title;

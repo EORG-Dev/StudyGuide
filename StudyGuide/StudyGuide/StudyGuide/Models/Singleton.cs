@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml.XPath;
 
 namespace StudyGuide.Models
 {
@@ -19,6 +20,7 @@ namespace StudyGuide.Models
                     {
                         _instance = new Singleton();
                         _instance.OnNavBack += (s, e) => { };
+                        _instance.OnAddEntry += (s, e) => { };
                     }
                     return _instance;
                 }
@@ -62,6 +64,16 @@ namespace StudyGuide.Models
             handler(sender, e);
         }
         public event EventHandler<EventArgs> OnNavBack;
+        public void TriggerAddEntryEvent(C_Beobachtung result)
+        {
+            OnAddEntryEvent(result, new EventArgs());
+        }
+        protected virtual void OnAddEntryEvent(object sender, EventArgs e)
+        {
+            EventHandler<EventArgs> handler = OnAddEntry;
+            handler(sender, e);
+        }
+        public event EventHandler<EventArgs> OnAddEntry;
         #endregion Parameter
     }
 }
