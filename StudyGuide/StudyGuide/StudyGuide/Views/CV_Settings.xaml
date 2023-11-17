@@ -1,5 +1,7 @@
 ﻿<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:self="clr-namespace:StudyGuide.ViewModels"
+             x:DataType="self:VM_Settings"
              x:Class="StudyGuide.Views.CV_Settings">
     <ContentView.Resources>
         <Style TargetType="Label" x:Key="LBL_Row">
@@ -28,7 +30,7 @@
                    Grid.Row="0"
                    Margin="0,0,0,0" />
             <StackLayout Grid.Row="1">
-                <!--Dienst-->
+                <!--Persönliche Daten-->
                 <Frame Margin="16,0,16,8" VerticalOptions="StartAndExpand">
                     <StackLayout Spacing="8">
                         <Label Text="Anwendende Person"
@@ -61,6 +63,19 @@
                                    HorizontalOptions="FillAndExpand"/>
                         </Grid>
                     
+                    </StackLayout>
+                </Frame>
+                <!--Persönliche Daten-->
+                <Frame Margin="16,0,16,8"
+                       VerticalOptions="Start">
+                    <StackLayout Spacing="8">
+                        <Label Text="Verwaltung"
+                               Style="{StaticResource LBL_Header}" />
+                        <!--Löschen-->
+                        <Button BackgroundColor="Red" 
+                                Text="Daten löschen"
+                                Command="{Binding DeleteAllCommand}"/>
+
                     </StackLayout>
                 </Frame>
             </StackLayout>

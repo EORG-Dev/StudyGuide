@@ -114,13 +114,11 @@ namespace StudyGuide.ViewModels
                 var res = await App.Current.MainPage.DisplayAlert("Exportieren", "Mit dieser Funktion kannst du deine Beobachtungsergebnisse exportieren und mit deiner Mail-App teilen, um sie deinem Ansprechpartner zuzusenden. Möchtest du fortfahren?", "Ja", "Nein");
                 if (res)
                 {
-                    Navigation.Instance.PopAsync();
-                    Singleton.Instance.TriggerNavBackEvent();
-                }
-                //App.Current.MainPage.DisplayAlert("Achtung", "Hier fehlt ein Feature :)", "Abbrechen");
-                // Build File
-                var list = Srv_Data.GetAll<C_Einsatz>().ToList();
-                await SRV_Export.ExportEntries(list);
+                    // Build File
+                    var list = Srv_Data.GetAll<C_Einsatz>().ToList();
+                    await SRV_Export.ExportEntries(list);
+                } 
+               
             } catch (Exception ex)
             {
                 App.Current.MainPage.DisplayAlert("Fehler!", ex.Message, "Ok");

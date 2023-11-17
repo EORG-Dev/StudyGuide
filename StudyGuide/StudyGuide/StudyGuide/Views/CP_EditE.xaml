@@ -25,7 +25,7 @@
         </Style>
         <Style TargetType="Grid" x:Key="GRD_Row">
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-            <Setter Property="ColumnDefinitions" Value="128,*"/>
+            <Setter Property="ColumnDefinitions" Value="104,*"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>

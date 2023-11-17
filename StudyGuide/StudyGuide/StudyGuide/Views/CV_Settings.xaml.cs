@@ -1,4 +1,5 @@
 ﻿using StudyGuide.Models;
+using StudyGuide.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,8 @@ namespace StudyGuide.Views
 		public CV_Settings ()
 		{
 			InitializeComponent ();
+
+            BindingContext = new VM_Settings();
 
             // Load
 

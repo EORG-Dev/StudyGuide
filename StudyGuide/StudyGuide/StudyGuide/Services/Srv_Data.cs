@@ -1,4 +1,6 @@
-﻿using StudyGuide.Models;
+﻿using DocumentFormat.OpenXml.Drawing.Charts;
+using SQLite;
+using StudyGuide.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -95,6 +97,14 @@ namespace StudyGuide.Services
             using (SQLite.SQLiteConnection con = new SQLite.SQLiteConnection(Singleton.Instance.DataFilePath))
             {
                 con.Delete(Delete as T);
+                return true;
+            }
+        }
+        public static bool RemoveAll<T>() where T : class
+        {
+            using (SQLite.SQLiteConnection con = new SQLite.SQLiteConnection(Singleton.Instance.DataFilePath))
+            {
+                con.DeleteAll(new TableMapping(typeof(T)));
                 return true;
             }
         }
