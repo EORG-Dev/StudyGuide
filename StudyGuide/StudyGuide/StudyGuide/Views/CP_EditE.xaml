@@ -16,7 +16,10 @@
         <Style TargetType="Label" x:Key="LBL_Header">
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="FontAttributes" Value="Bold"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="LineBreakMode"
+                    Value="WordWrap" />
             <Setter Property="Margin" Value="0,0,0,16"/>
         </Style>
         <Style TargetType="StackLayout" x:Key="SLO_Row">

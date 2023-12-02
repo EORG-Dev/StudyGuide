@@ -22,7 +22,16 @@ namespace StudyGuide.ViewModels
             Singleton.Instance.OnAddEntry += (s, e) =>
             {
                 var entry = s as C_Beobachtung;
-                List?.Add(entry);
+                var res = List?.Where(X => X.ID == entry.ID).FirstOrDefault();
+                if (res != null)
+                {
+                    int index = List.IndexOf(res);
+                    List.RemoveAt(index);
+                    List.Insert(index, entry);
+                } else
+                {
+                    List?.Add(entry);
+                }
             };
         }
         bool IsEdit;
