@@ -37,7 +37,7 @@ namespace StudyGuide.Services
             // Delete Template
             File.Delete(Singleton.Instance.TemplateFilePath);
             // Re-Add Template
-            byte[] template = Resources.Ressources.ToolAnalyse_v0;
+            byte[] template = Resources.Ressources.ToolAnalyse_v1;
             if (template?.Length > 0)
             {
                 File.WriteAllBytes(Singleton.Instance.TemplateFilePath, template);
@@ -85,9 +85,14 @@ namespace StudyGuide.Services
                     worksheet.Cell($"L{row}").Value = $"{s.C_Bemerkung}";
                     worksheet.Cell($"N{row}").Value = $"{s.S_Symbol} - {s.S_Bemerkung}";
                     //
+                    // worksheet.Row(row).AdjustToContents(); // Funktioniert leider nicht :/
+                    //
                     row++;
                 }
+
             }
+
+            // 
 
             // Remove Template
             tempWorksheet.Delete();

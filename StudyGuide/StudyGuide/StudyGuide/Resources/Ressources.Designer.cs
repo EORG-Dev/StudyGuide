@@ -63,9 +63,9 @@ namespace StudyGuide.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] ToolAnalyse_v0 {
+        internal static byte[] ToolAnalyse_v1 {
             get {
-                object obj = ResourceManager.GetObject("ToolAnalyse_v0", resourceCulture);
+                object obj = ResourceManager.GetObject("ToolAnalyse_v1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
